@@ -6,6 +6,7 @@ public class Employer {
 
     private int id;
     private static int nextId = 1;
+    //static can be used by referencing the class name without creating an object.
     private String value;
 
     public Employer() {
@@ -15,6 +16,8 @@ public class Employer {
 
     public Employer(String value) {
         this();
+        //this() is used to call a constructor within the same class.
+        //doing so makes initializing id a default behavior
         this.value = value;
     }
 
