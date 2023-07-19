@@ -17,7 +17,7 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
@@ -95,4 +95,51 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    @Override
+    public String toString() {
+        if (name.equals("") && employer.getValue().equals("") && location.getValue().equals("") && positionType.getValue().equals("") && coreCompetency.getValue().equals("")) {
+            return "OOPS! This job does not seem to exist";
+        }
+
+        String job = "\nID: " + id + '\n';
+
+        if (name.equals("")) {
+            job = job + "Name: Data not available\n";
+        } else {
+            job = job + "Name: " + name + '\n';
+        }
+
+        if (employer.getValue().equals("")) {
+            job = job + "Employer: Data not available\n";
+        } else {
+            job = job + "Employer: " + employer.getValue() + '\n';
+        }
+
+        if (location.getValue().equals("")) {
+            job = job + "Location: Data not available";
+        } else {
+            job = job + "Location: " + location.getValue() +'\n';
+        }
+
+        if (positionType.getValue().equals("")) {
+            job = job + "Position Type: Data not available\n";
+
+        } else {
+            job = job + "Position Type: " + positionType.getValue() + '\n';
+        }
+
+        if (coreCompetency.getValue().equals("")) {
+            job = job + "Core Competency: Data not available\n";
+        } else {
+            job = job + "Core Competency: " + coreCompetency.getValue() + '\n';
+        }
+
+        return job;
+
+
+    }
+
+
+
 }

@@ -6,6 +6,8 @@ import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
 
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 /**
@@ -63,4 +65,52 @@ assertFalse(test.equals(testTwo));
     }
 
 
+    //using Test-Driven Development to build toString method
+    // when passed a Job object, it should return a string that contains a blank line before
+    // and after the job information
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job test = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals(test.toString().charAt(0), '\n');
+        assertEquals(test.toString().charAt(test.toString().length() - 1), '\n');
+
+
+    }
+
+
+    //the string contains a label for each field, followed by the data stored in that field.
+    //each field should have its own line
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job test = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+
+       assertTrue(test.toString().contains("ID: " + test.getId() + '\n'));
+       assertTrue(test.toString().contains("Name: " + test.getName() + '\n'));
+       assertTrue(test.toString().contains("Employer: " + test.getEmployer() + '\n'));
+       assertTrue(test.toString().contains("Location: " + test.getLocation() + "\n"));
+       assertTrue(test.toString().contains("Position Type: " + test.getPositionType() + '\n'));
+       assertTrue(test.toString().contains("Core Competency: " + test.getCoreCompetency() + '\n'));
+
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job test = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency("Persistence"));
+        assertTrue(test.toString().contains("Name: Data not available"));
+        assertTrue(test.toString().contains("Employer: Data not available"));
+        assertTrue(test.toString().contains("Location: Data not available"));
+        assertTrue(test.toString().contains("Position Type: Data not available"));
+        //assertTrue(test.toString().contains("Core Competency: " + test.getCoreCompetency() + "\n"));
+        assertTrue(test.toString().contains("Core Competency: Persistence"));
+    }
+
+
+    @Test
+    public void testToStringOnlyContainingIdField() {
+        Job test = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+assertEquals(test.toString(), "OOPS! This job does not seem to exist");
+
+    }
 }
+
