@@ -84,25 +84,24 @@ assertFalse(test.equals(testTwo));
     public void testToStringContainsCorrectLabelsAndData() {
         Job test = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-
-       assertTrue(test.toString().contains("ID: " + test.getId() + '\n'));
-       assertTrue(test.toString().contains("Name: " + test.getName() + '\n'));
-       assertTrue(test.toString().contains("Employer: " + test.getEmployer() + '\n'));
-       assertTrue(test.toString().contains("Location: " + test.getLocation() + "\n"));
-       assertTrue(test.toString().contains("Position Type: " + test.getPositionType() + '\n'));
-       assertTrue(test.toString().contains("Core Competency: " + test.getCoreCompetency() + '\n'));
-
+assertEquals(test.toString(), "ID: " + test.getId() + '\n' +
+        "Name: " + test.getName() + '\n' +
+        "Employer: " + test.getEmployer() + '\n' +
+        "Location: " + test.getLocation() + "\n" +
+        "Position Type: " + test.getPositionType() + '\n' +
+        "Core Competency: " + test.getCoreCompetency() + '\n');
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
         Job test = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency("Persistence"));
-        assertTrue(test.toString().contains("Name: Data not available"));
-        assertTrue(test.toString().contains("Employer: Data not available"));
-        assertTrue(test.toString().contains("Location: Data not available"));
-        assertTrue(test.toString().contains("Position Type: Data not available"));
-        //assertTrue(test.toString().contains("Core Competency: " + test.getCoreCompetency() + "\n"));
-        assertTrue(test.toString().contains("Core Competency: Persistence"));
+        assertEquals(test.toString(), "\nID: " + test.getId() + "\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Persistence\n"
+        );
     }
 
 

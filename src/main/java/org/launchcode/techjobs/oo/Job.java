@@ -117,7 +117,7 @@ public class Job {
         }
 
         if (location.getValue().equals("")) {
-            job = job + "Location: Data not available";
+            job = job + "Location: Data not available\n";
         } else {
             job = job + "Location: " + location.getValue() +'\n';
         }
