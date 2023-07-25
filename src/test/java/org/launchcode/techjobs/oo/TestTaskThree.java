@@ -14,6 +14,12 @@ import static org.junit.Assert.*;
 /**
  * Created by LaunchCode
  */
+//test empty constructor
+
+
+
+
+
 public class TestTaskThree extends AbstractTest {
 
     @Test
